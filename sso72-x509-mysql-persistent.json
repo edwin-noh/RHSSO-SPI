@@ -2,7 +2,7 @@
     "apiVersion": "template.openshift.io/v1",
     "kind": "Template",
     "labels": {
-        "template": "sso72-x509-mysql-persistent",
+        "template": "shb-sso72-x509-mysql-persistent",
         "xpaas": "1.4.14"
     },
     "message": "A new persistent RH-SSO service (using MySQL) has been created in your project. The admin username/password for accessing the master realm via the RH-SSO console is ${SSO_ADMIN_USERNAME}/${SSO_ADMIN_PASSWORD}. The username/password for accessing the MySQL database \"${DB_DATABASE}\" is ${DB_USERNAME}/${DB_PASSWORD}. The HTTPS keystore used for serving secure content, the JGroups keystore used for securing JGroups communications, and server truststore used for securing RH-SSO requests were automatically created via OpenShift's service serving x509 certificate secrets.",
@@ -10,7 +10,7 @@
         "annotations": {
             "description": "An example RH-SSO 7 application with a MySQL database. For more information about using this template, see https://github.com/jboss-openshift/application-templates.",
             "iconClass": "icon-sso",
-            "openshift.io/display-name": "Red Hat Single Sign-On 7.2 + MySQL (Persistent)",
+            "openshift.io/display-name": "Red Hat Single Sign-On 7.2 + MySQL for Shinhan Bank",
             "openshift.io/provider-display-name": "Red Hat, Inc.",
             "tags": "sso,keycloak,jboss",
             "template.openshift.io/documentation-url": "https://access.redhat.com/documentation/en/red-hat-single-sign-on/",
@@ -19,11 +19,10 @@
             "version": "1.4.14"
         },
         "creationTimestamp": "2018-12-29T15:14:07Z",
-        "name": "sso72-x509-mysql-persistent",
+        "name": "shb-sso72-x509-mysql-persistent",
         "namespace": "openshift",
         "resourceVersion": "1792",
-        "selfLink": "/apis/template.openshift.io/v1/namespaces/openshift/templates/sso72-x509-mysql-persistent",
-        "uid": "6334f680-0b7c-11e9-9b5d-0050568c9dc2"
+        "selfLink": "/apis/template.openshift.io/v1/namespaces/openshift/templates/shb-sso72-x509-mysql-persistent"
     },
     "objects": [
         {
@@ -320,7 +319,7 @@
                             ],
                             "from": {
                                 "kind": "ImageStreamTag",
-                                "name": "redhat-sso72-openshift:1.2",
+                                "name": "shb-sso72-openshift:1.0",
                                 "namespace": "${IMAGE_STREAM_NAMESPACE}"
                             }
                         },
