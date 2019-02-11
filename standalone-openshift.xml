@@ -124,7 +124,7 @@
                     </security>
                 </datasource>
                 <datasource jta="true" jndi-name="java:/MariaDB" pool-name="MariaDB" enabled="true" use-ccm="false">
-                    <connection-url>jdbc:mariadb://localhost:3306/vender</connection-url>
+                    <connection-url>jdbc:mariadb://mariadb.admin-mariadb.svc:3306/vendor</connection-url>
                     <driver-class>org.mariadb.jdbc.Driver</driver-class>
                     <driver>mariadb</driver>
                     <security>
