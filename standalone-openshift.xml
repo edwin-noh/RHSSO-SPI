@@ -175,7 +175,7 @@
                 </managed-scheduled-executor-services>
             </concurrent>
             <default-bindings context-service="java:jboss/ee/concurrency/context/default"
-                              datasource="java:jboss/datasources/ExampleDS"
+                              datasource="java:jboss/datasources/KeycloakDS"
                               jms-connection-factory="java:jboss/DefaultJMSConnectionFactory"
                               managed-executor-service="java:jboss/ee/concurrency/executor/default"
                               managed-scheduled-executor-service="java:jboss/ee/concurrency/scheduler/default"
@@ -328,7 +328,7 @@
             <stacks>
                 <stack name="udp">
                     <transport type="UDP" socket-binding="jgroups-udp"/>
-                    <protocol type="openshift.KUBE_PING" socket-binding="jgroups-mping"/>
+                    <protocol type="openshift.DNS_PING" socket-binding="jgroups-mping"/>
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK" socket-binding="jgroups-udp-fd"/>
                     <protocol type="FD_ALL"/>
@@ -337,7 +337,7 @@
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    
+                    <!--WARNING: No password defined for JGroups cluster. AUTH protocol has been disabled. Please define JGROUPS_CLUSTER_PASSWORD. -->
                     <protocol type="pbcast.GMS"/>
                     <protocol type="UFC"/>
                     <protocol type="MFC"/>
@@ -345,7 +345,7 @@
                 </stack>
                 <stack name="tcp">
                     <transport type="TCP" socket-binding="jgroups-tcp"/>
-                    <protocol type="openshift.KUBE_PING" socket-binding="jgroups-mping"/>
+                    <protocol type="openshift.DNS_PING" socket-binding="jgroups-mping"/>
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK" socket-binding="jgroups-tcp-fd"/>
                     <protocol type="FD_ALL"/>
@@ -354,7 +354,7 @@
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    
+                    <!--WARNING: No password defined for JGroups cluster. AUTH protocol has been disabled. Please define JGROUPS_CLUSTER_PASSWORD. -->
                     <protocol type="pbcast.GMS"/>
                     <protocol type="MFC"/>
                     <protocol type="FRAG2"/>
