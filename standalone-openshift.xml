@@ -45,7 +45,7 @@
                 <authorization>
                     <properties path="application-roles.properties" relative-to="jboss.server.config.dir"/>
                 </authorization>
-                <!-- No SSL configuration discovered -->
+                <!-- ##SSL## -->
             </security-realm>
         </security-realms>
         <audit-log>
@@ -81,7 +81,7 @@
         <subsystem xmlns="urn:jboss:domain:logging:3.0">
             <console-handler name="CONSOLE">
                 <formatter>
-                    <named-formatter name="COLOR-PATTERN"/>
+                    <named-formatter name="##CONSOLE-FORMATTER##"/>
                 </formatter>
             </console-handler>
             <logger category="com.arjuna">
@@ -113,7 +113,6 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-                
                 <!-- ##DATASOURCES## -->
                 <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
                     <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
@@ -156,7 +155,7 @@
             </datasources>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">
-            <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}" auto-deploy-exploded="false"/>
+            <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}" auto-deploy-exploded="##AUTO_DEPLOY_EXPLODED##"/>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:ee:4.0">
             <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
@@ -175,7 +174,7 @@
                 </managed-scheduled-executor-services>
             </concurrent>
             <default-bindings context-service="java:jboss/ee/concurrency/context/default"
-                              datasource="java:jboss/datasources/KeycloakDS"
+                              datasource="##DEFAULT_DATASOURCE##"
                               jms-connection-factory="java:jboss/DefaultJMSConnectionFactory"
                               managed-executor-service="java:jboss/ee/concurrency/executor/default"
                               managed-scheduled-executor-service="java:jboss/ee/concurrency/scheduler/default"
@@ -328,16 +327,16 @@
             <stacks>
                 <stack name="udp">
                     <transport type="UDP" socket-binding="jgroups-udp"/>
-                    <protocol type="openshift.DNS_PING" socket-binding="jgroups-mping"/>
+                    <!-- ##JGROUPS_PING_PROTOCOL## -->
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK" socket-binding="jgroups-udp-fd"/>
                     <protocol type="FD_ALL"/>
                     <protocol type="VERIFY_SUSPECT"/>
-                    
+                    <!-- ##JGROUPS_ENCRYPT## -->
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    <!--WARNING: No password defined for JGroups cluster. AUTH protocol has been disabled. Please define JGROUPS_CLUSTER_PASSWORD. -->
+                    <!-- ##JGROUPS_AUTH## -->
                     <protocol type="pbcast.GMS"/>
                     <protocol type="UFC"/>
                     <protocol type="MFC"/>
@@ -345,16 +344,16 @@
                 </stack>
                 <stack name="tcp">
                     <transport type="TCP" socket-binding="jgroups-tcp"/>
-                    <protocol type="openshift.DNS_PING" socket-binding="jgroups-mping"/>
+                    <!-- ##JGROUPS_PING_PROTOCOL## -->
                     <protocol type="MERGE3"/>
                     <protocol type="FD_SOCK" socket-binding="jgroups-tcp-fd"/>
                     <protocol type="FD_ALL"/>
                     <protocol type="VERIFY_SUSPECT"/>
-                    
+                    <!-- ##JGROUPS_ENCRYPT## -->
                     <protocol type="pbcast.NAKACK2"/>
                     <protocol type="UNICAST3"/>
                     <protocol type="pbcast.STABLE"/>
-                    <!--WARNING: No password defined for JGroups cluster. AUTH protocol has been disabled. Please define JGROUPS_CLUSTER_PASSWORD. -->
+                    <!-- ##JGROUPS_AUTH## -->
                     <protocol type="pbcast.GMS"/>
                     <protocol type="MFC"/>
                     <protocol type="FRAG2"/>
@@ -534,7 +533,7 @@
                         <auth-module code="Dummy"/>
                     </authentication-jaspi>
                 </security-domain>
-                <!-- no additional security domains configured --><!-- ##ADDITIONAL_SECURITY_DOMAINS## -->
+                <!-- ##ADDITIONAL_SECURITY_DOMAINS## -->
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:transactions:4.0">
@@ -551,7 +550,7 @@
             <server name="default-server">
                 <ajp-listener name="ajp" socket-binding="ajp"/>
                 <http-listener name="default" socket-binding="http" redirect-socket="proxy-https" enable-http2="true" proxy-address-forwarding="true"/>
-                <!-- No HTTPS configuration discovered -->
+                <!-- ##HTTPS_CONNECTOR## -->
                 <host name="default-host" alias="localhost">
                     <location name="/" handler="sso-welcome-content"/>
                     <!-- ##ACCESS_LOG_VALVE## -->
