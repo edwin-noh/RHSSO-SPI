@@ -178,6 +178,13 @@
             "name": "MEMORY_LIMIT",
             "value": "1Gi",
             "required": false
+        },
+        {
+            "displayName": "Core Integration Service URL",
+            "description": "Service URL for retrieve user information of core",
+            "name": "CORE_AUTH_URL",
+            "value": "http://shb-core-auth-mock.core-auth-mock.svc:8090/camel/user",
+            "required": true
         }
     ],
     "objects": [
@@ -463,6 +470,10 @@
                                     {
                                         "name": "SSO_SERVICE_PASSWORD",
                                         "value": "${SSO_SERVICE_PASSWORD}"
+                                    },
+                                    {
+                                        "name": "CORE_AUTH_URL",
+                                        "value": "${CORE_AUTH_URL}"
                                     }
                                 ]
                             }
